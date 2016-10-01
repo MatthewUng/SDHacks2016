@@ -32,16 +32,13 @@ chatClient.prototype.onError = function onError(message){
 chatClient.prototype.onMessage = function onMessage(message){
     if(message !== null){
         var parsed = this.parseMessage(message.data);
-
         if(parsed !== null){
-            userPoints = localStorage.getItem(parsed.username);
-
-            if(userPoints === null){
-                localStorage.setItem(parsed.username, 10);
-            }
-            else {
-                localStorage.setItem(parsed.username, parseFloat(userPoints) + 0.25);
-            }
+			var split = parsed.message.split("");
+            if (split.indexOf("!cat" >= 0)) {
+				cat(function(a){
+					chatClient.message(JSON.parse(a).facts);
+				});
+			}
         }
     }
 };
@@ -112,6 +109,6 @@ chatClient.prototype.parseMessage = function parseMessage(rawMessage) {
 
 chatClient.prototype.message = function message(msg) {
 	var socket = this.webSocket;
-	console.log("PRIVMSG " + this.channel + msg);
-	socket.send("PRIVMSG " + this.channel + " " + msg);
+	console.log("PRIVMSG " + this.channel + " :" + msg);
+	var s = socket.send("PRIVMSG " + this.channel + " :" + msg);
 }
