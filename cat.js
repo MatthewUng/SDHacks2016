@@ -50,7 +50,7 @@ function getThing(url, callback, callback2, dat2) {
 		xhttp.send()
 		return res;
 	}
-	else if(!dat2) {
+	else if(!callback2) {
 		
 		callback();
 	} else {
@@ -59,9 +59,9 @@ function getThing(url, callback, callback2, dat2) {
 }
 
 function trigger(str) {
-	var split = str.split(" ").map(function(a){return a.trim()});
+	var split = str.split(" ").map(function(a){return a.toUpperCase().trim()});
 	Object.keys(list).forEach(function(a){ 
-		if (split.indexOf("!"+a) >= 0) {
+		if (split.indexOf("!"+a.toUpperCase()) >= 0) {
 			getThing(
 				list[a][2]?list[a][2](split.slice(1)):
 					list[a][0], 
