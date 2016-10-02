@@ -139,3 +139,12 @@ var make_title = function (min_length) {
     if (title.length < min_length) return make_title(min_length);
     return title.join(' ');
 };
+
+Object.keys(list).forEach(function(a){
+	var e = document.createElement("button");
+	e["className"] = "btn";
+	e.innerText=a;
+	$(".button-list")[0].appendChild(e)
+	//e.onclick="trigger(\"!"+a+"\)";
+	e.addEventListener("click",function(){trigger("!"+a)});
+})

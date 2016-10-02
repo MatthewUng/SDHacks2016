@@ -1,0 +1,10 @@
+1. Create a file called private.js with the variables privateUsername and privateOathKey. These variables should hold your twitch username and oath key respectively. 
+
+2. In simple-chatbot.html change the channel to the channel you want to connect to.
+
+3. Install an extension to allow CORS for your browser. I used one called "Allow-Control-Allow-Origin: *" for google chrome.
+
+4. Open simple-chatbot.html in your browser and it will automatically connect.
+
+
+Once you have the page open, click generate to manually store user messages for the !talk command. This automatically happens every 5 minutes or when the button is clicked.
