@@ -13,8 +13,15 @@ function randomEle(arr){
 	return function(){return arr[~~(Math.random()*arr.length)]};
 }
 
+helptext = {
+	subreddit: " <subreddit>",
+	pirate: " <sentence>",
+	number: " <number>",
+	yoda: " <sentence>"
+}
+
 list = {
-	help: ["", function(){return "Available commands: " + Object.keys(list).map(function(q){return "!"+q}).sort().join(", ")}],
+	help: ["", function(){return "Available commands: " + Object.keys(list).map(function(q){return "!"+q + (helptext[q]?helptext[q]:"")}).sort().join(", ")}],
 	cat: ["http://catfacts-api.appspot.com/api/facts", function(a){return JSON.parse(a).facts}],
 	chuck: ["https://api.chucknorris.io/jokes/random", function(a){return JSON.parse(a).value}],
 	chuck2: ["http://api.icndb.com/jokes/random", function(a){return JSON.parse(a).value.joke}],
