@@ -17,29 +17,16 @@
     </script>
     
     <div class="button-list">
-        <button class="connect btn">Connect to chat</button>
-        <button class="disconnect btn">Disconnect from chat</button>
-        <button class="display btn">Populate leaderboard</button>
     </div>
 
-    <div id="leaderboard">
-        <div class="header">Leaderboard</div>
-        <div class="leaderboard-output"></div>
-    </div>
-
+	<script src="nerdyPickupLines.js"></script>
+	<script src="pokemonPickupLines.js"></script>
     <script src="simple-chatbot.js"></script>
 	<script src="private.js"></script>
 	<script src="cat.js"></script>
     <script>
     $(document).ready(function(){
-        $('.connect').click(function(){
             window.chatClient.open();
-        });
-        $('.disconnect').click(function(){
-            window.chatClient.close();
-        });
-        $('.display').click(function(){
-        });
     });
 
     window.chatClient = new chatClient({

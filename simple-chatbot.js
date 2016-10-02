@@ -33,12 +33,7 @@ chatClient.prototype.onMessage = function onMessage(message){
     if(message !== null){
         var parsed = this.parseMessage(message.data);
         if(parsed !== null){
-			var split = parsed.message.split("");
-            if (split.indexOf("!cat") >= 0) {
-				getThing(cat,function(a){
-					chatClient.message(JSON.parse(a).facts);
-				});
-			}
+			trigger(parsed.message);
         }
     }
 };
@@ -110,5 +105,5 @@ chatClient.prototype.parseMessage = function parseMessage(rawMessage) {
 chatClient.prototype.message = function message(msg) {
 	var socket = this.webSocket;
 	console.log("PRIVMSG " + this.channel + " :" + msg);
-	//socket.send("PRIVMSG " + this.channel + " :" + msg);
+	socket.send("PRIVMSG " + this.channel + " :" + msg);
 }
