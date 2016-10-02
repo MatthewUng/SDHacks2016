@@ -14,8 +14,8 @@ function randomEle(arr){
 }
 
 list = {
+	help: ["", function(){return "Available commands: " + Object.keys(list).map(function(q){return "!"+q}).sort().join(", ")}],
 	cat: ["http://catfacts-api.appspot.com/api/facts", function(a){return JSON.parse(a).facts}],
-	taco: [],
 	chuck: ["https://api.chucknorris.io/jokes/random", function(a){return JSON.parse(a).value}],
 	chuck2: ["http://api.icndb.com/jokes/random", function(a){return JSON.parse(a).value.joke}],
 	latvia: ["https://www.reddit.com/r/latvianjokes/random.json", redditJoke],
